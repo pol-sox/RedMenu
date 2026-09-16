@@ -2,7 +2,7 @@
 
 A hopeful fork.
 
-The [original RedMenu](https://github.com/TomGrobbe/RedMenu) by TomGrobbe (or the fork I forked) hasn't been touched in years. So I am gonna try to work on it.
+The [original RedMenu](https://github.com/TomGrobbe/RedMenu) by TomGrobbe hasn't been touched in years. So I am gonna try to work on it.
 
 All credit for the original code goes to Tom. His README said code from the repo could be reused as long as it's credited, so that's what this is.
 
