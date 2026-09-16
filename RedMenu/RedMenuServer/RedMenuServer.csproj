@@ -34,4 +34,9 @@
     </Reference>
 
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="$(TargetDir)RedMenuServer.net.dll" DestinationFolder="$(SolutionDir)..\" />
+	</Target>
+
 </Project>
