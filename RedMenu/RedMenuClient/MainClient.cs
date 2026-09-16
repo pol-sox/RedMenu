@@ -9,6 +9,7 @@ using static CitizenFX.Core.Native.API;
 using CitizenFX.Core.Native;
 using RedMenuShared;
 using RedMenuClient.util;
+using RedMenuClient.features.misc;
 
 namespace RedMenuClient
 {
@@ -60,6 +61,11 @@ namespace RedMenuClient
             if (ConfigManager.UnlockFullMap)
             {
                 SetMinimapHideFow(true);
+            }
+
+            if (UserDefaults.ObjectESP)
+            {
+                ObjectESPFeature.Execute();
             }
 
             //Needs more research.
