@@ -1,16 +1,17 @@
+using CitizenFX.Core;
+using CitizenFX.Core.Native;
+using MenuAPI;
+using RedMenuClient.data;
+using RedMenuClient.features.player;
+using RedMenuClient.util;
+using RedMenuShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using MenuAPI;
-using CitizenFX.Core;
 using static CitizenFX.Core.Native.API;
-using CitizenFX.Core.Native;
-using RedMenuShared;
-using RedMenuClient.util;
-using System.Net;
-using RedMenuClient.data;
 
 namespace RedMenuClient.menus
 {
@@ -862,6 +863,23 @@ namespace RedMenuClient.menus
 
                 if (PermissionsManager.IsAllowed(Permission.PMCustomizeMpPeds))
                 {
+
+                    Menu mpAppearanceMenu = new Menu("MP Appearance", "Customize MP character appearance");
+                    MenuItem mpAppearanceBtn = new MenuItem("MP Appearance", "Customize MP character appearance") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
+
+                    appearanceMenu.AddMenuItem(mpAppearanceBtn);
+                    MenuController.AddSubmenu(appearanceMenu, mpAppearanceMenu);
+                    MenuController.BindMenuItem(appearanceMenu, mpAppearanceMenu, mpAppearanceBtn);
+
+                    #region Wardrobe Camera
+                    List<string> camPositions = new List<string> { "Off", "Full", "Face", "Torso", "Lower" };
+                    MenuListItem camList = new MenuListItem("Camera View", camPositions, 0, "Change or disable the wardrobe camera.");
+                    mpAppearanceMenu.AddMenuItem(camList);
+
+
+                    mpAppearanceMenu.OnListIndexChange += (m, item, oldIndex, newIndex, itemIndex) =>
+                    {
+                    };
                     MenuItem femaleCustom = new MenuItem("MP Female Customization", "Customize your MP female ped.") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
                     MenuItem maleCustom = new MenuItem("MP Male Customization", "Customize your MP male ped.") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
                     MenuItem spCustom = new MenuItem("SP Customization", "Customize story mode peds.") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
@@ -870,8 +888,8 @@ namespace RedMenuClient.menus
                     Menu maleCustomMenu = new Menu("Customization", "MP Male Customization");
                     Menu spCustomMenu = new Menu("Customization", "SP Customization");
 
-                    MenuController.AddSubmenu(appearanceMenu, femaleCustomMenu);
-                    MenuController.AddSubmenu(appearanceMenu, maleCustomMenu);
+                    MenuController.AddSubmenu(mpAppearanceMenu, femaleCustomMenu);
+                    MenuController.AddSubmenu(mpAppearanceMenu, maleCustomMenu);
                     MenuController.AddSubmenu(appearanceMenu, spCustomMenu);
 
                     #region female
@@ -1600,8 +1618,8 @@ namespace RedMenuClient.menus
                     #endregion
 
 
-                    appearanceMenu.AddMenuItem(femaleCustom);
-                    appearanceMenu.AddMenuItem(maleCustom);
+                    mpAppearanceMenu.AddMenuItem(femaleCustom);
+                    mpAppearanceMenu.AddMenuItem(maleCustom);
                     appearanceMenu.AddMenuItem(spCustom);
 
                     MenuController.BindMenuItem(appearanceMenu, femaleCustomMenu, femaleCustom);
@@ -1611,9 +1629,9 @@ namespace RedMenuClient.menus
 
                     Menu bodyCustomizationMenu = new Menu("Body", "Customize MP character body");
                     MenuItem bodyCustomization = new MenuItem("MP Body Customization", "Customize MP character body") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
-                    appearanceMenu.AddMenuItem(bodyCustomization);
-                    MenuController.AddSubmenu(appearanceMenu, bodyCustomizationMenu);
-                    MenuController.BindMenuItem(appearanceMenu, bodyCustomizationMenu, bodyCustomization);
+                    mpAppearanceMenu.AddMenuItem(bodyCustomization);
+                    MenuController.AddSubmenu(mpAppearanceMenu, bodyCustomizationMenu);
+                    MenuController.BindMenuItem(mpAppearanceMenu, bodyCustomizationMenu, bodyCustomization);
 
                     List<string> bodySizes = new List<string>();
                     List<string> waistSizes = new List<String>();
@@ -1646,9 +1664,9 @@ namespace RedMenuClient.menus
 
                     Menu facialFeaturesMenu = new Menu("Facial Features", "Customize facial features");
                     MenuItem facialFeatures = new MenuItem("Facial Features", "Customize facial features") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
-                    appearanceMenu.AddMenuItem(facialFeatures);
-                    MenuController.AddSubmenu(appearanceMenu, facialFeaturesMenu);
-                    MenuController.BindMenuItem(appearanceMenu, facialFeaturesMenu, facialFeatures);
+                    mpAppearanceMenu.AddMenuItem(facialFeatures);
+                    MenuController.AddSubmenu(mpAppearanceMenu, facialFeaturesMenu);
+                    MenuController.BindMenuItem(mpAppearanceMenu, facialFeaturesMenu, facialFeatures);
 
                     foreach (data.FacialFeature feature in data.FacialFeatureData.FacialFeatures)
                     {
