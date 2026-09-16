@@ -36,8 +36,7 @@
     </Reference>
 
   </ItemGroup>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if exist &quot;$(SolutionDir)postbuild.cmd&quot; &quot;$(SolutionDir)postbuild.cmd&quot;" />
+	<Copy SourceFiles="$(TargetDir)RedMenuClient.net.dll;$(TargetDir)Newtonsoft.Json.dll;$(TargetDir)MenuAPI.dll" DestinationFolder="$(SolutionDir)..\" />
   </Target>
 </Project>
