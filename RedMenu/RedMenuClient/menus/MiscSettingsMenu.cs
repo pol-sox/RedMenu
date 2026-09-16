@@ -15,7 +15,7 @@ namespace RedMenuClient.menus
 {
     class MiscSettingsMenu
     {
-        private static Menu menu = new Menu("Misc Settings", $"RedMenu Version {ConfigManager.Version}");
+        private static Menu menu = new Menu("Misc Settings", $"Version {ConfigManager.Version}");
         private static bool setupDone = false;
 
         private static void SetupMenu()
@@ -25,13 +25,16 @@ namespace RedMenuClient.menus
 
             MenuCheckboxItem minimapKeybind = new MenuCheckboxItem("Minimap Controls", "Holding down the Select Radar Option button will allow you to toggle the minimap on/off when this option is enabled.", UserDefaults.MiscMinimapControls);
             MenuCheckboxItem showCores = new MenuCheckboxItem("Always Show Cores", "The cores above your radar will always be displayed when this option is enabled. The game will automatically show or hide the cores if this is disabled.", UserDefaults.MiscAlwaysShowCores);
+            MenuCheckboxItem objectESP = new MenuCheckboxItem("Object ESP", "Allows you to see information about objects near you, such as their hash and entity ID. Using first-person also allows you to view the text closer.", UserDefaults.ObjectESP);
             MenuItem clearArea = new MenuItem("Clear Area", "Clears the area around your player.");
+            
 
             menu.AddMenuItem(minimapKeybind);
             menu.AddMenuItem(showCores);
 
             if (PermissionsManager.IsAllowed(Permission.MSClearArea))
             {
+                menu.AddMenuItem(objectESP);
                 menu.AddMenuItem(clearArea);
             }
 

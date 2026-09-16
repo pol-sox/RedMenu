@@ -1,16 +1,13 @@
 name 'RedMenu'
 description 'Trainer / Menu created for the RedM community, useful for lots of things.'
-author 'Vespura'
+author 'polsox'
 url 'https://github.com/tomgrobbe/redmenu/'
-version 'v1.0.0'
+version 'v0.1.0'
 
--- Actual resource info setup stuff.
-fx_version 'adamant' -- I like this version
-games { 
-    'rdr3' -- Read Documentation Really.... 3?
-}
+fx_version 'cerulean'
+game 'rdr3'
 
--- Files for the client side.
+
 files {
     'MenuAPI.dll',
     'Newtonsoft.Json.dll',
