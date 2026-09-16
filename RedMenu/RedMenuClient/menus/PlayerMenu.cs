@@ -879,7 +879,14 @@ namespace RedMenuClient.menus
 
                     mpAppearanceMenu.OnListIndexChange += (m, item, oldIndex, newIndex, itemIndex) =>
                     {
+                        if (item == camList)
+                        {
+                            string selected = camPositions[newIndex];
+                            WardrobeCamera.Start(selected); // If "Off", it calls Stop()!
+                        }
                     };
+                    #endregion
+
                     MenuItem femaleCustom = new MenuItem("MP Female Customization", "Customize your MP female ped.") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
                     MenuItem maleCustom = new MenuItem("MP Male Customization", "Customize your MP male ped.") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
                     MenuItem spCustom = new MenuItem("SP Customization", "Customize story mode peds.") { RightIcon = MenuItem.Icon.ARROW_RIGHT };
