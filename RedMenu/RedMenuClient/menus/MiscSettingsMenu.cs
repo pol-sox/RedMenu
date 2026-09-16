@@ -55,6 +55,14 @@ namespace RedMenuClient.menus
                     Function.Call((Hash)0xD4EE21B7CC7FD350, UserDefaults.MiscAlwaysShowCores); // _ALWAYS_SHOW_HORSE_CORES
                     Function.Call((Hash)0x50C803A4CD5932C5, UserDefaults.MiscAlwaysShowCores); // _ALWAYS_SHOW_PLAYER_CORES
                 }
+                else if (item == objectESP)
+                {
+                    UserDefaults.ObjectESP = _checked;
+                    if (_checked)
+                    {
+                        ObjectESPFeature.Execute();
+                    }
+                }
             };
         }
 
