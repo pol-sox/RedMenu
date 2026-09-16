@@ -350,3 +350,7 @@ MigrationBackup/
 .ionide/
 
 postbuild.cmd
+Newtonsoft.Json.dll
+RedMenuClient.net.dll
+RedMenuServer.net.dll
+MenuAPI.dll

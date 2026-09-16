@@ -266,5 +266,23 @@ namespace RedMenuClient.util
                 StorageManager.Save("WeaponDefaultSavedLoadout", value, true);
             }
         }
+
+        public static bool ObjectESP
+        {
+            get
+            {
+                if (StorageManager.TryGet("ObjectESP", out bool val))
+                {
+                    return val;
+                }
+                ObjectESP = false;
+                return false;
+            }
+            set
+            {
+                StorageManager.Save("ObjectESP", value, true);
+            }
+        }
+
     }
 }
