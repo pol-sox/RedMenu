@@ -201,6 +201,8 @@ namespace RedMenuClient
                         await Delay(0);
                     }
                 }
+
+                await Delay(100);
             }
             else
             {
