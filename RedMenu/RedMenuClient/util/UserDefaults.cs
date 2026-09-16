@@ -1,12 +1,13 @@
-﻿using System;
+﻿using CitizenFX.Core;
+using CitizenFX.Core.Native;
+using RedMenuClient.features.misc;
+using RedMenuShared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CitizenFX.Core;
 using static CitizenFX.Core.Native.API;
-using RedMenuShared;
-using CitizenFX.Core.Native;
 
 namespace RedMenuClient.util
 {
@@ -281,6 +282,12 @@ namespace RedMenuClient.util
             set
             {
                 StorageManager.Save("ObjectESP", value, true);
+
+                // If turned ON.
+                if (value)
+                {
+                    ObjectESPFeature.Execute();
+                }
             }
         }
 
